@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "tabs/map/map",
+    "tabs/scan/scan",
+    "tabs/user/user",
+    "pages/carStatus/carStatus"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "tabs/map/map",
+        "text": "首页"
+      },
+      {
+        "pagePath": "tabs/scan/scan",
+        "text": "日志"
+      },
+      {
+        "pagePath": "tabs/user/user",
+        "text": "日志"
+      }
+    ]
+  }
+}
