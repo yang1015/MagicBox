@@ -16,8 +16,9 @@ Page({
     })
   },
   onLoad: function () {
+    console.log("index.js onload")
+    console.log(app.globalData)
     if (app.globalData.userInfo) {
-
       console.log("有全局变量")
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -53,16 +54,27 @@ Page({
   getUserInfo: function(e) {
     console.log("点击获取用户信息button并且用户做出选择之后：")
     console.log(e)
+    
+   
+
 
     if (!e.detail.rawData) console.log("被拒绝授权了");
     else {
       console.log("成功获得授权"); 
+
+      
+
       wx.switchTab({
         url: '../../tabs/map/map'
-      }) 
+      });
     }
     
+
+    /* 赋值给全局变量了 其他组件可以直接调用 */
     app.globalData.userInfo = e.detail.userInfo
+    if (this.callback) { //这个函数名字和你定义的一样即可
+      this.callback() //执行定义的回调函数
+    }
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true

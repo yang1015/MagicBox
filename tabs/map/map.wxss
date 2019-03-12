@@ -1,1 +1,8 @@
 /* map/map.wxss */
+
+
+/* map组件的controls废弃了，使用cover-view代替 */
+.controls {
+  width: 50rpx;
+  height: 60rpx;
+}

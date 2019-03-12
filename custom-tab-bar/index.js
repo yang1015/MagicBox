@@ -7,18 +7,18 @@ Component({
       pagePath: "/tabs/map/map",
       // iconPath: "/image/icon_component.png",
       // selectedIconPath: "/image/icon_component_HL.png",
-      text: "组件"
+      text: "网点"
     }, {
       pagePath: "/tabs/scan/scan",
       // iconPath: "/image/icon_API.png",
       // selectedIconPath: "/image/icon_API_HL.png",
-      text: "接口"
+      text: "扫码洗车"
     },
       {
         pagePath: "/tabs/user/user",
         // iconPath: "/image/icon_API.png",
         // selectedIconPath: "/image/icon_API_HL.png",
-        text: "接口"
+        text: "我的"
       }]
   },
   attached() {
@@ -28,9 +28,16 @@ Component({
       const data = e.currentTarget.dataset
       const url = data.path
       wx.switchTab({ url })
+
+      if (data.index === 0) {
+        console.log("跳转网点页面");
+        wx.navigateTo({
+          url: '/pages/network/network'
+          // url: '../../pages/network/network', //这个路径是基于tab的 先跳出custom再跳出tab才进入pages
+        })
+      }
       if (data.index === 1) {
         console.log("调用scan");
-
         wx.scanCode({
           success(res) {
             console.log(res)
@@ -39,8 +46,9 @@ Component({
               url: '/pages/carStatus/carStatus?id=' + code,  /*这里要使用绝对路径，相对路径会找不到 */
             })
           }
-        })
-      }
+        });
+      } 
+
       this.setData({
         selected: data.index
       })

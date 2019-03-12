@@ -1,2 +1,18 @@
-<!--map/map.wxml-->
-<text>map/map.wxml</text>
+<map
+  id="map"
+  longitude="{{longitude}}"
+  latitude= "{{latitude}}"
+  scale="12"
+  markers="{{markers}}"
+  bindmarkertap="markertap"
+  show-location
+  style="width: 100%; height: 100vh;"
+>
+<cover-view class = "controls">
+<cover-image src = "../../images/marker.png">
+
+</cover-image>
+
+</cover-view>
+
+</map>

@@ -5,7 +5,9 @@
     "tabs/map/map",
     "tabs/scan/scan",
     "tabs/user/user",
-    "pages/carStatus/carStatus"
+    "pages/carStatus/carStatus",
+    "pages/network/network",
+    "pages/network/network-detail/network-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,5 +31,10 @@
         "text": "日志"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }

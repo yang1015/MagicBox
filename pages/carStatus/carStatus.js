@@ -1,11 +1,12 @@
 // pages/carStatus/carStatus.js
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    
   },
 
   /**
