@@ -1,0 +1,9 @@
+/* pages/network/network.wxss */
+
+.networkCard {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  border: 1px solid lavenderblush;
+
+}

@@ -9,28 +9,30 @@
     "pages/network/network",
     "pages/network/network-detail/network-detail"
   ],
+
+  "tabBar" :{
+    "custom": true,
+   
+    "list": [
+        {
+      "pagePath": "tabs/map/map",
+      "text": "网点"
+        },
+        {
+      "pagePath": "tabs/scan/scan",
+      "text": "扫码洗车"
+        },
+        {
+        "pagePath": "tabs/user/user",
+        "text": "我的"
+        }
+      ] 
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "custom": true,
-    "list": [
-      {
-        "pagePath": "tabs/map/map",
-        "text": "首页"
-      },
-      {
-        "pagePath": "tabs/scan/scan",
-        "text": "日志"
-      },
-      {
-        "pagePath": "tabs/user/user",
-        "text": "日志"
-      }
-    ]
   },
   "permission": {
     "scope.userLocation": {

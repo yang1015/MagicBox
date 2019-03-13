@@ -12,7 +12,9 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       
+        // 这里会获取一个5min过期的code
+        // 把res.code发送给后端code2Session以换取openid(用户在当前程序的唯一标识), sessionkey和unionId(全平台卫衣标识)
       }
     })
 
@@ -23,7 +25,8 @@ App({
         if (res.authSetting['scope.userInfo'] && res.authSetting['scope.userLocation']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           console.log("已授权 即将跳转map tab")
-          wx.reLaunch({url: '/tabs/map/map'});
+          wx.reLaunch({ url: '/tabs/map/map' });
+          
         } else {
           console.log("没有获得授权");
         }

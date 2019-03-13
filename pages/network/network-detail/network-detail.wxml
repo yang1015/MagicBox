@@ -1,0 +1,3 @@
+<!--pages/network/network-detail/network-detail.wxml-->
+<text>
+{{networkId}}</text>

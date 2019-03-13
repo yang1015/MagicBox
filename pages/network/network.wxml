@@ -1,0 +1,19 @@
+<!--pages/network/network.wxml-->
+<view>
+
+<text>网点列表</text>
+<view>下拉列表   共{{networkList.length}}</view>
+ <view wx:for="{{networkList}}" wx:key="{{item.id}}" >
+
+ <view class = "networkCard"
+ bindtap='getNetworkDetail'data-networkId = "{{item.id}}">
+  {{item.title}}
+  {{item.address}}
+  {{item.status}}
+  </view>
+
+ </view>
+
+
+</view>
+
