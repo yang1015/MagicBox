@@ -69,6 +69,8 @@ Page({
       isShowLetter: true,
       scrollTopId: showLetter,
     })
+
+
     var that = this;
     setTimeout(function () {
       that.setData({
@@ -78,15 +80,17 @@ Page({
   },
   //选择城市
   bindCity: function (e) {
-    console.log("bindCity")
-    this.setData({ city: e.currentTarget.dataset.city })
+    console.log("选择城市")
+    this.setData({ city: e.currentTarget.dataset.city });
+      console.log(e.currentTarget.dataset.city)
   },
   //选择热门城市
   bindHotCity: function (e) {
-    console.log("bindHotCity")
+    console.log("选择热门城市")
     this.setData({
       city: e.currentTarget.dataset.city
-    })
+    });
+      console.log(e.currentTarget.dataset.city)
   },
   //点击热门城市回到顶部
   hotCity: function () {

@@ -35,6 +35,11 @@ Page({
     })
 
   },
+    switchCity() {
+      wx.navigateTo({
+          url: '../switchcity/switchcity'
+      });
+    },
   /**
    * Lifecycle function--Called when page is initially rendered
    */

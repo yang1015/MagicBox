@@ -5,7 +5,8 @@
     "tabs/user/user",
     "pages/carStatus/carStatus",
     "pages/network/network",
-    "pages/network/network-detail/network-detail"
+    "pages/network/network-detail/network-detail",
+    "pages/switchcity/switchcity"
   ],
 
   "tabBar" :{

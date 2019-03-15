@@ -1,7 +1,7 @@
 <!--pages/network/network.wxml-->
 <view>
 
-<text>网点列表</text>
+<text bindtap = "switchCity">网点列表</text>
 <view>下拉列表   共{{networkList.length}}</view>
  <view wx:for="{{networkList}}" wx:key="{{item.id}}" >
 

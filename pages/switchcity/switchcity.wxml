@@ -10,7 +10,7 @@
     {{showLetter}}
   </view>
 </block>
-<scroll-view scroll-y="true" style="height:{{winHeight}}px" bindscroll="bindScroll" 
+<scroll-view scroll-y="true" style="height: {{winHeight}}px" bindscroll="bindScroll"
  scroll-into-view="{{scrollTopId}}" scroll-top="{{scrollTop}}">
   <view class="hotcity-common thisCity">当前选择城市</view>
   <view class="thisCityName">{{city}}</view>
