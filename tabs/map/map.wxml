@@ -2,17 +2,18 @@
   id="map"
   longitude="{{longitude}}"
   latitude= "{{latitude}}"
-  scale="12"
+  scale="{{scale}}"
   markers="{{markers}}"
   bindmarkertap="markertap"
   show-location
   style="width: 100%; height: 100vh;"
 >
-<cover-view class = "controls">
-<cover-image src = "../../images/marker.png">
+<cover-view wx:if = "{{!locationAuthorized}}" class = "controls"  bindtap='authorizeLocation'>
 
-</cover-image>
+<button>获取定位</button>
 
 </cover-view>
 
 </map>
+
+ <!-- 这里的longitue和latitude指的是map的center -->

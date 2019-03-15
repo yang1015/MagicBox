@@ -1,1 +1,33 @@
 /* user/user.wxss */
+
+.usercenter {
+  background: #f8f8f8;
+  height: 100vh;
+
+}
+
+.avatar-nickname-container {
+  background: #fff;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+}
+
+.avatar {
+  border-radius: 100rpx;
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+.listItem {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 10rpx;
+}

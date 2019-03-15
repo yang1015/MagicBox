@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
     "tabs/map/map",
     "tabs/scan/scan",
     "tabs/user/user",

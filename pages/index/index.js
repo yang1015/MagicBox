@@ -4,9 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '欢迎来到即刻魔方无人洗车',
     userInfo: {},
     hasUserInfo: false,
+    /* 判断小程序的API，回调，参数，组件等是否在当前版本可用。 */
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -16,10 +17,8 @@ Page({
     })
   },
   onLoad: function () {
-    console.log("index.js onload")
-    console.log(app.globalData)
+    /* 老用户，允许授权，有数据可以回填，已经在app,js里存储在globalData中 */
     if (app.globalData.userInfo) {
-      console.log("有全局变量")
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -29,55 +28,59 @@ Page({
       // 所以此处加入 callback 以防止这种情况
       console.log("有获取头像昵称的按键")
       app.userInfoReadyCallback = res => {
-        console.log("===userInfoReadyCallback===")
-        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
-        console.log("===========================")
       }
-    } else {
-      console.log("没有全局变量，且没有获取头像按键的情况。")
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    }  
   },
   getUserInfo: function(e) {
-    console.log("点击获取用户信息button并且用户做出选择之后：")
-    console.log(e)
-    
-   
+    console.log("触发getUserInfo")
 
+    /* e.detail里会返回加密数据 */
+    if (!e.detail.rawData) {
+     console.log("拒绝授权")
+    } else {
+      console.log("允许授权，并拿到用户信息"); 
 
-    if (!e.detail.rawData) console.log("被拒绝授权了");
-    else {
-      console.log("成功获得授权"); 
+      /* 赋值给全局变量了 其他组件可以直接调用 */
+      console.log(e.detail.rawData);
+      app.globalData.userInfo = JSON.parse(e.detail.rawData);
 
-      
-
-      wx.switchTab({
-        url: '../../tabs/map/map'
+      this.setData({
+        userInfo: e.detail.rawData,
+        hasUserInfo: true
       });
-    }
-    
 
-    /* 赋值给全局变量了 其他组件可以直接调用 */
-    app.globalData.userInfo = e.detail.userInfo
-    if (this.callback) { //这个函数名字和你定义的一样即可
-      this.callback() //执行定义的回调函数
+      wx.setStorageSync({
+        key: 'userInfo',
+        data: e.detail.rawData
+      })
+
+      // console.log(app.globalData)
+      wx.switchTab({url: '../../tabs/map/map'});
     }
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  },
+
+  onUnload(){
+   
   }
 })
+
+
+
+
+// else {
+//   console.log("没有全局变量，且没有获取头像按键的情况。")
+//   // 在没有 open-type=getUserInfo 版本的兼容处理
+//   wx.getUserInfo({
+//     success: res => {
+//       app.globalData.userInfo = res.userInfo
+//       this.setData({
+//         userInfo: res.userInfo,
+//         hasUserInfo: true
+//       })
+//     }
+//   })
+// }

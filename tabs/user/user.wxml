@@ -1,2 +1,28 @@
 <!--user/user.wxml-->
-<text>user/user.wxml</text>
+
+<view class='usercenter'>
+
+  <view class="avatar-nickname-container">
+    <image src="{{hasUserInfo? userInfo.avatarUrl : '../../images/marker.png'}}" class="avatar" />  
+    <button wx:if="{{!hasUserInfo}}"
+      open-type="getUserInfo" 
+      bindgetuserinfo = "getUserInfo">点击登录</button>  
+    <text wx:else>{{userInfo.nickName}}</text>  
+    
+  </view>
+
+  <view class="listItem">
+    <view class="listItemLeft">洗车记录</view>
+    <view class="listItemRight"> > </view>
+  </view>
+
+  <view class="listItem">
+    <view class="listItemLeft">洗车记录</view>
+    <view class="listItemRight"> > </view>
+  </view>
+
+  <view class="listItem">
+    <view class="listItemLeft">洗车记录</view>
+    <view class="listItemRight"> > </view>
+  </view>
+</view>

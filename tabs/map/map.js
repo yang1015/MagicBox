@@ -11,17 +11,19 @@ Page({
    */
   data: {
     /* 经纬度不能不写，不然就定位到海里去了 */
-    longitude: 121.00,
-    latitude: 28.00,  // 默认为空，用户授权之后拿取地理位置，如果用户拒绝授权？
+    longitude: 116.23,
+    latitude: 39.54,  // 默认为北京，用户授权之后拿取地理位置，如果用户拒绝授权？
     /* 后端获取用户当前位置周边所有的网点，然后重新渲染 */
     markers: [{
       iconPath: '/images/marker.png',
       id: 0,
-      latitude: 28.51,
-      longitude: 121.56,
+      longitude: 116.23,
+      latitude: 39.54,
       width: 50,
       height: 50
     }],
+    scale: 8,
+    locationAuthorized: true
   },
 
   /**
@@ -29,24 +31,39 @@ Page({
    */
   onLoad: function (options) {
     /* 获取当前位置周围的所有网点 并渲染marker*/
-    console.log("map onload")
-    
     var this_ = this;
-    wx.getLocation({
-      type: "gcj02",
-      altitude: true,
-      success(res) {
-        this_.setData({
-          longitude: res.longitude,
-          latitude: res.latitude,
-          markers: this_.getLocationMarkers()
-        });
-        console.log(this_.data)
-      },
-      fail(err) {
-        console.log(err)
+    wx.getSetting({
+      success: res => {
+        if (!res.authSetting['scope.userLocation']) {
+          console.log("用户之前拒绝授权了");
+          /* 如果定位授权被拒绝 */
+          wx.showModal({
+            title: '提示',
+            content: '对不起，请打开定位权限才能使用该功能!',
+            confirmText: '允许授权',
+            cancelText: '拒绝授权',
+            success(res) {
+              if (res.confirm) {
+                /* 用户允许发起授权，再次弹窗 */
+                this_.authorizeLocation();
+              } else if (res.cancel) {
+                console.log('用户点击取消');
+                // 给wxml添加一个获取授权的icon
+                // 直接定位到beijing centered
+                this_.setData({
+                  longitude: 116.23,
+                  latitude: 39.54,
+                  locationAuthorized: false
+                });
+              }
+            }
+          })
+        } else {
+          console.log("用户location授权了并定位");
+          this_.authorizeLocation();
+        }
       }
-    });
+    })
   },
 
   /**
@@ -65,6 +82,7 @@ Page({
     }
     return markers;
   },
+
   createMarker(point) {
     let marker = {
       iconPath: "../../images/marker.png",
@@ -78,39 +96,26 @@ Page({
     return marker;
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
+  authorizeLocation() {
+    let this_ = this;
+    wx.getLocation({
+      type: "gcj02",
+      altitude: true,
+      success(res) {
+        /* 让用户当前的位置成为地图的center经纬度 */
+        console.log(res.longitude + " " + res.latitude)
+        this_.setData({
+          longitude: res.longitude,
+          latitude: res.latitude,
+          markers: this_.getLocationMarkers(),
+          scale: 14,
+          locationAuthorized: true
+        });
+      },
+      fail(err) {
+        console.log(err)
+      }
+    });
   },
 
   /**

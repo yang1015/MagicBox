@@ -1,4 +1,10 @@
 /**app.wxss**/
+@import 'weui.wxss';
+
+body {
+  background: #f8f8f8;
+}
+
 .container {
   height: 100%;
   display: flex;
