@@ -1,0 +1,45 @@
+/* components/popup/popup.wxss */
+
+.modalMask {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 100;
+    -moz-opacity: 0.7;
+    opacity: 0.70;
+    filter: alpha(opacity=70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalPopup {
+    width: 80%;
+    height: 60vh;
+    z-index: 1000;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid green;
+}
+
+.modalPopupContent {
+    border: 1px solid red;
+    color: green;
+}
+
+.modelPopupButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalPopup button {
+    width: 40%;
+    height: 48px;
+}
+
+.modalPopup button:nth-child(1) {
+    margin-right: 48px;
+}

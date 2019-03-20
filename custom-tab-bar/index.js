@@ -2,7 +2,7 @@ Component({
   data: {
     selected: 0,
     color: "#7A7E83",
-    selectedColor: "#7A7E83",
+    selectedColor: "7A7E83",
     list: [
       {
       pagePath: "/tabs/map/map",
@@ -52,7 +52,14 @@ Component({
       } 
 
 
-      if (data.index === 2) wx.switchTab({ url })
+      if (data.index === 2) {
+        /* 在这里判断用户之前是否授权登录过
+        * 如果没有，弹出getUserInfo的授权
+        * 如果有，直接回填用户数据
+        * */
+          wx.switchTab({ url })
+      }
+
 
       // wx.switchTab({ url })
 

@@ -1,0 +1,12 @@
+<!--components/popup/popup.wxml-->
+<template name = "modalPopup" >
+    <cover-view class="modalMask" bindtap='controlMask'>
+        <cover-view class="modalPopup">
+            <cover-view class="modalPopupContent"> 8888</cover-view>
+            <cover-view class="modelPopupButton">
+                <button bindtap="getUserInfo">确认</button>
+                <button catchtap = "controlMask">取消</button>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>

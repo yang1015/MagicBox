@@ -1,16 +1,12 @@
 /* map/map.wxss */
-
+@import './popup/popup.wxss';
 
 /* map组件的controls废弃了，使用cover-view代替 */
 .controls {
-  height: 48px;
- position: fixed;
- bottom: 100px;
+    height: 48px;
+    position: fixed;
+    bottom: 100px;
 
 }
 
-button {
-  /* position: fixed;
-  bottom: 49px;
-  right: 0; */
-}
+
